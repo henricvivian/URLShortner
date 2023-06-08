@@ -1,16 +1,21 @@
 import pyshorteners
 
-# Enter your bit.ly API key here
-BITLY_API_KEY = "YOUR_BITLY_API_KEY"
+def shorten_url(url, api_key):
+    shortener = pyshorteners.Shortener('bit.ly', api_key=api_key)
+    return shortener.short(url)
 
-# Create an instance of pyshorteners.Shortener() with the bit.ly service and your API key
-s = pyshorteners.Shortener('bit.ly', api_key=BITLY_API_KEY)
+def main():
+    # Enter your Bitly API key here
+    bitly_api_key = "YOUR_BITLY_API_KEY"
 
-# Enter the URL to be shortened
-url = input("Enter the URL to be shortened: ")
+    # Enter the URL to be shortened
+    url = input("Enter the URL to be shortened: ")
 
-# Shorten the URL using the bit.ly service
-short_url = s.short(url)
+    # Shorten the URL using the Bitly service
+    short_url = shorten_url(url, bitly_api_key)
 
-# Display the shortened URL
-print("Shortened URL: ", short_url)
+    # Display the shortened URL
+    print("Shortened URL:", short_url)
+
+if __name__ == "__main__":
+    main()
